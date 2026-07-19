@@ -446,6 +446,10 @@ function renderQuiz() {
     `;
   }
 
+  const noteBox = (ans && ans.correct !== undefined && q.note)
+    ? `<div class="note-box"><div class="note-label">解説</div><div class="note-text">${q.note}</div></div>`
+    : "";
+
   const nextBtn = (ans && ans.correct !== undefined)
     ? `<button class="btn btn-primary" style="margin-top:20px" onclick="nextQuestion()">${state.index + 1 >= state.queue.length ? "結果を見る" : "次の問題へ"} →</button>`
     : "";
@@ -462,6 +466,7 @@ function renderQuiz() {
     </div>
     <div class="q-card"><p>${q.q}</p></div>
     ${body}
+    ${noteBox}
     ${nextBtn}
   `;
 }
